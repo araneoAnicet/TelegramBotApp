@@ -28,15 +28,9 @@ from os import path
 
 class TelegramBot:
 
-    AUTHOR = ''  # author
-    DESCR = ''  # description
-    BOT_NAME = ''  # bot's name
-    URL = ''  # the bone link for requests
-    BOT_TOKEN = ''  # telegram bot token
     DF_INFO = {'session': '', 'language': '', 'id': ''}  # DialogFlow information
-    processing = []  # a queue of messages to be processed
 
-    def bot_set(self,
+    def __init__(self,
                 token,
                 df_id='',
                 df_session='',
@@ -53,6 +47,7 @@ class TelegramBot:
         self.AUTHOR = author
         self.DESCR = descr
         self.BOT_NAME = bot_name
+        self.processing = []  # a queue of messages to be processed
         return token, df_session, df_lang
 
     def __json_collect(self, to_conv):  # turns a json dict into the file
